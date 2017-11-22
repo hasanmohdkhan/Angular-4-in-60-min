@@ -12,57 +12,62 @@
 </head>
 
 <h1>HELLO {{name}}</h1>
-<div class="container">
-    <div class="jumbotron" item-width="500">
-        <h4>Personal Details</h4>
-        <h5>
-            <form>
-                <div>
-                    <label for="name">Name:</label> <br>
-                    <input type="text" [(ngModel)]="name" name="name">
 
-                </div> <br>
-                <div>
-                    <label for="age">Age:</label> <br>
-                    <input type="text" [(ngModel)]="age" name="age">
-
-                </div> <br>
-
-                <div>
-                    <label for="city">City:</label><br>
-                    <input type="text" [(ngModel)]="address.city" name="city">
-
-                </div> <br>
-                <div>
-                    <label for="state">State:</label> <br>
-                    <input type="text" [(ngModel)]="address.state" name="state">
-
-                </div> <br>
-                <div>
-                    <label for="pin">Pin:</label> <br>
-                    <input type="text" [(ngModel)]="address.pin" name="pin">
-
-                </div> <br>
-
-                <div>
-                    <label for="pin">Quote:</label> <br>
-                    <input type="text" [(ngModel)]="quote" name="quotw">
-
-                </div><br>
-
-            </form>
-            <form (submit)="addForm(hobby.value)">
-                <label for="hobby">Hobby:</label><br>
-                <input type="text" #hobby>
+<button class="btn btn-success" (click)="toggleEdit()"><i class="glyphicon glyphicon-edit"></i></button>
 
 
-            </form>
-        </h5>
+<div *ngIf=isEdit>
+    <div class="container">
+        <div class="jumbotron" item-width="500">
+            <h4>Personal Details</h4>
+            <h5>
+                <form>
+                    <div>
+                        <label for="name">Name:</label> <br>
+                        <input type="text" [(ngModel)]="name" name="name">
 
+                    </div> <br>
+                    <div>
+                        <label for="age">Age:</label> <br>
+                        <input type="text" [(ngModel)]="age" name="age">
+
+                    </div> <br>
+
+                    <div>
+                        <label for="city">City:</label><br>
+                        <input type="text" [(ngModel)]="address.city" name="city">
+
+                    </div> <br>
+                    <div>
+                        <label for="state">State:</label> <br>
+                        <input type="text" [(ngModel)]="address.state" name="state">
+
+                    </div> <br>
+                    <div>
+                        <label for="pin">Pin:</label> <br>
+                        <input type="text" [(ngModel)]="address.pin" name="pin">
+
+                    </div> <br>
+
+                    <div>
+                        <label for="pin">Quote:</label> <br>
+                        <input type="text" [(ngModel)]="quote" name="quotw">
+
+                    </div><br>
+
+                </form>
+                <form (submit)="addForm(hobby.value)">
+                    <label for="hobby">Hobby:</label><br>
+                    <input type="text" #hobby>
+
+
+                </form>
+            </h5>
+
+        </div>
     </div>
+
 </div>
-
-
 
 
 
@@ -99,5 +104,16 @@
     </li>
 </ul>
 
+<h1>Post</h1> <button class="btn btn-success" (click)="togglePost()"><i class="glyphicon glyphicon-edit"></i></button>
 
+
+<div *ngIf='isPost'>
+    <div *ngFor='let post of posts'>
+        <h4>Title: {{post.title}} , ID: {{post.id}}</h4>
+        <p>Body: {{post.body}}</p>
+
+
+
+    </div>
+</div>
 <button class="btn btn-danger" (click)="onclick()"> Click me </button>

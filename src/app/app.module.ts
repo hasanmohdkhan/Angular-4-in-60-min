@@ -1,20 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule , Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
-import { DataService } from './services/data.service'
+import { DataService } from './services/data.service';
+import { AboutComponent } from './components/about/about.component'
+import { Router } from '@angular/router/src/router';
+import { Component } from '@angular/core/src/metadata/directives';
+
+const appRoutes : Routes = [
+  {path:'' , component:UserComponent},
+  {path:'about' ,component:AboutComponent}
+
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    AboutComponent,
+
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fail } from 'assert';
 import { DataService} from '../../services/data.service'
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-user',
@@ -14,8 +15,11 @@ age:number;
 address:Address;
 hobbies:string[];
 quote:any;
+posts:Post[];
+isEdit:boolean = false;
+isPost:boolean = false;
 
-  constructor() {
+  constructor(private dataservice:DataService) {
 
     console.log("Constructor.....");
    }
@@ -32,6 +36,13 @@ quote:any;
 
 this.hobbies = [];
 this.quote = "";
+this.dataservice.getPosts().subscribe((posts) => {
+  console.log(posts);
+  this.posts = posts;
+
+
+
+});
 
 
 
@@ -66,6 +77,20 @@ this.quote = "";
 
   }
 
+  toggleEdit(){
+   
+   this.isEdit = !this.isEdit;
+   console.log("Edit Click: "+ this.isEdit);
+
+  }
+
+  togglePost(){
+    
+    this.isPost = !this.isPost;
+    console.log("Post Click: "+ this.isPost);
+ 
+   }
+
 }
 
 interface Address {
@@ -73,5 +98,15 @@ interface Address {
   city:string,
   state:string,
   pin:number
+
+}
+
+interface Post{
+//post object
+id:number,
+title:string,
+body:string,
+userId:number
+
 
 }
