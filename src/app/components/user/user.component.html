@@ -1,0 +1,103 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<h1>HELLO {{name}}</h1>
+<div class="container">
+    <div class="jumbotron" item-width="500">
+        <h4>Personal Details</h4>
+        <h5>
+            <form>
+                <div>
+                    <label for="name">Name:</label> <br>
+                    <input type="text" [(ngModel)]="name" name="name">
+
+                </div> <br>
+                <div>
+                    <label for="age">Age:</label> <br>
+                    <input type="text" [(ngModel)]="age" name="age">
+
+                </div> <br>
+
+                <div>
+                    <label for="city">City:</label><br>
+                    <input type="text" [(ngModel)]="address.city" name="city">
+
+                </div> <br>
+                <div>
+                    <label for="state">State:</label> <br>
+                    <input type="text" [(ngModel)]="address.state" name="state">
+
+                </div> <br>
+                <div>
+                    <label for="pin">Pin:</label> <br>
+                    <input type="text" [(ngModel)]="address.pin" name="pin">
+
+                </div> <br>
+
+                <div>
+                    <label for="pin">Quote:</label> <br>
+                    <input type="text" [(ngModel)]="quote" name="quotw">
+
+                </div><br>
+
+            </form>
+            <form (submit)="addForm(hobby.value)">
+                <label for="hobby">Hobby:</label><br>
+                <input type="text" #hobby>
+
+
+            </form>
+        </h5>
+
+    </div>
+</div>
+
+
+
+
+
+<h3>
+    <ul>
+        <li>Name : {{name}}</li>
+        <li>Age : {{age}}</li>
+        <li>Address
+            <ul>
+                <li>City: {{address.city}}</li>
+                <li>State: {{address.state}}</li>
+                <li>Pin: {{address.pin}}</li>
+
+            </ul>
+        </li>
+
+    </ul>
+</h3>
+
+<h1>Hobbies</h1>
+<ul>
+    <h3>
+        <li *ngFor="let hobby of hobbies"> {{hobby}}
+            <button class="btn btn-danger" (click)="removeBtn(hobby)"><i class="glyphicon glyphicon-trash"></i></button>
+
+
+        </li>
+    </h3>
+</ul>
+<h1> Quotes </h1>
+<ul>
+    <li>
+        <h2>{{quote}}</h2>
+    </li>
+</ul>
+
+
+<button class="btn btn-danger" (click)="onclick()"> Click me </button>
